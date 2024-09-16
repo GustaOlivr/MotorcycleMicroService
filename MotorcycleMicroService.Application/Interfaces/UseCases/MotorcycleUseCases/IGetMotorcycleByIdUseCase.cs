@@ -1,4 +1,4 @@
-﻿using MotorcycleMicroService.Domain.Dto.MotorcycleDto.Response;
+﻿using MotorcycleMicroService.Application.Dto.MotorcycleDto.Response;
 
 namespace MotorcycleMicroService.Application.Interfaces.UseCases.MotorcycleUseCases
 {
