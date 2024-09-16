@@ -1,6 +1,9 @@
+using MotorcycleMicroService.CrossCutting.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Registro de serviços na IoC
+builder.Services.RegisterServices(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
