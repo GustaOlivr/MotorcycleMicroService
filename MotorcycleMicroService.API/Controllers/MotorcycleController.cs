@@ -13,17 +13,20 @@ namespace MotorcycleMicroService.API.Controllers
         private readonly IGetMotorcycleByIdUseCase _getMotorcycleByIdUseCase;
         private readonly IUpdateMotorcycleUseCase _updateMotorcycleUseCase;
         private readonly IDeleteMotorcycleUseCase _deleteMotorcycleUseCase;
+        private readonly IGetAllMotorcyclesUseCase _getAllMotorcyclesUseCase;
 
         public MotorcyclesController(
             ICreateMotorcycleUseCase createMotorcycleUseCase,
             IGetMotorcycleByIdUseCase getMotorcycleByIdUseCase,
             IUpdateMotorcycleUseCase updateMotorcycleUseCase,
-            IDeleteMotorcycleUseCase deleteMotorcycleUseCase)
+            IDeleteMotorcycleUseCase deleteMotorcycleUseCase,
+            IGetAllMotorcyclesUseCase getAllMotorcyclesUseCase)
         {
             _createMotorcycleUseCase = createMotorcycleUseCase;
             _getMotorcycleByIdUseCase = getMotorcycleByIdUseCase;
             _updateMotorcycleUseCase = updateMotorcycleUseCase;
             _deleteMotorcycleUseCase = deleteMotorcycleUseCase;
+            _getAllMotorcyclesUseCase = getAllMotorcyclesUseCase;
         }
 
         [HttpPost]
@@ -43,6 +46,17 @@ namespace MotorcycleMicroService.API.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll([FromQuery] GetAllMotorcyclesRequest dto)
+        {
+            GetAllMotorcyclesResponse response = await _getAllMotorcyclesUseCase.ExecuteAsync(dto);
+            if (response == null)
+                return NotFound();
+
+            return Ok(response);
+        }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(Guid id, [FromBody] UpdateMotorcycleRequest dto)

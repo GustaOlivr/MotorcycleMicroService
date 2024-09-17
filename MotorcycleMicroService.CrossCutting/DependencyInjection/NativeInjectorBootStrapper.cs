@@ -33,6 +33,7 @@ namespace MotorcycleMicroService.CrossCutting.DependencyInjection
             services.AddScoped<IGetMotorcycleByIdUseCase, GetMotorcycleByIdUseCase>();
             services.AddScoped<IUpdateMotorcycleUseCase, UpdateMotorcycleUseCase>();
             services.AddScoped<IDeleteMotorcycleUseCase, DeleteMotorcycleUseCase>();
+            services.AddScoped<IGetAllMotorcyclesUseCase, GetAllMotorcyclesUseCase>();
         }
     }
 }
