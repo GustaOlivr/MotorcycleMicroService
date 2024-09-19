@@ -1,6 +1,6 @@
 ﻿namespace MotorcycleMicroService.Domain.Entities
 {
-    public class Motorcycle
+    public class Motorcycle : BaseEntity
     {
         public Guid MotorcycleId { get; set; }
         public string Name { get; set; }

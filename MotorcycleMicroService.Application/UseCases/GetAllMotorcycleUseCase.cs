@@ -20,15 +20,15 @@ namespace MotorcycleMicroService.Application.UseCases
 
         public async Task<GetAllMotorcyclesResponse> ExecuteAsync(GetAllMotorcyclesRequest request)
         {
-            // Aplicar filtros e paginação
-            var motorcycles = await _motorcycleService.GetAllAsync(
+            IList<Motorcycle> motorcycles = await _motorcycleService.GetAllAsync(
                 filter: m => (string.IsNullOrEmpty(request.Name) || m.Name.Contains(request.Name)) &&
                              (string.IsNullOrEmpty(request.Manufacturer) || m.Manufacturer.Contains(request.Manufacturer)),
                 skip: (request.PageIndex - 1) * request.PageSize,
                 take: request.PageSize
             );
-
-            return _mapper.Map<GetAllMotorcyclesResponse>(motorcycles);
+            GetAllMotorcyclesResponse response = _mapper.Map<GetAllMotorcyclesResponse>(motorcycles);
+            response.TotalCount = motorcycles.Count;
+            return response;
         }
     }
 }
