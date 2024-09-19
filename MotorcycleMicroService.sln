@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleMicroService.API"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleMicroService.Tests", "MotorcycleMicroService.Tests\MotorcycleMicroService.Tests.csproj", "{6EC2907D-B6DA-4267-9343-CDFF5BEA09E4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{FC56CB96-C80C-4116-8D92-8D6A2469E328}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleMicroService.CrossCutting", "MotorcycleMicroService.CrossCutting\MotorcycleMicroService.CrossCutting.csproj", "{14187F6E-5876-48AD-9EF5-48D165084084}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,10 @@ Global
 		{6EC2907D-B6DA-4267-9343-CDFF5BEA09E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC2907D-B6DA-4267-9343-CDFF5BEA09E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EC2907D-B6DA-4267-9343-CDFF5BEA09E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14187F6E-5876-48AD-9EF5-48D165084084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14187F6E-5876-48AD-9EF5-48D165084084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14187F6E-5876-48AD-9EF5-48D165084084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14187F6E-5876-48AD-9EF5-48D165084084}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +65,7 @@ Global
 		{A1AEA3BE-48D2-4FD4-8C6F-96E11D7D634E} = {33B7C1CA-9B07-4389-ADED-99DB8A08C5E9}
 		{F02F23F2-3ABE-4B07-83F6-1C35F5184B4B} = {410E8D3A-5B82-47DE-A98A-B79CFF575D6B}
 		{6EC2907D-B6DA-4267-9343-CDFF5BEA09E4} = {C686631D-6C0F-4AD1-BDA9-885341F5E19D}
+		{14187F6E-5876-48AD-9EF5-48D165084084} = {FC56CB96-C80C-4116-8D92-8D6A2469E328}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB1FA542-E6DA-4BBB-9122-16AA407CDF9E}
