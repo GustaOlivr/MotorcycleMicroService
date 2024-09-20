@@ -21,12 +21,16 @@ namespace MotorcycleMicroService.CrossCutting.DependencyInjection
 
             // Repositórios
             services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
 
             // Serviços
             services.AddScoped<IMotorcycleService, MotorcycleService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+
 
             // AutoMapper
             services.AddAutoMapper(typeof(MotorcycleMappingProfile));
+            services.AddAutoMapper(typeof(CustomerMappingProfile));
 
             // Casos de Uso
             services.AddScoped<ICreateMotorcycleUseCase, CreateMotorcycleUseCase>();

@@ -10,12 +10,12 @@ namespace MotorcycleMicroService.Application.AutoMapping
         public CustomerMappingProfile()
         {
             //RequestDTO to Motorcycle Auto Mapping
-            CreateMap<CreateCustomerRequest, Customer>();
+            //CreateMap<CreateCustomerRequest, Customer>();
             //CreateMap<UpdateCustomerRequest, Customer>();
 
 
             ////Motorcycle to ResponseDTO Auto Mapping
-            CreateMap<Customer, CreateCustomerResponse>();
+            //CreateMap<Customer, CreateCustomerResponse>();
             //CreateMap<Customer, GetCustomerByIdResponse>();
             //CreateMap<Customer, UpdateCustomerResponse>();
 
