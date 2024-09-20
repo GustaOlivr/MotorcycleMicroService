@@ -10,7 +10,7 @@ namespace MotorcycleMicroService.Application.AutoMapping
         public MotorcycleMappingProfile()
         {
             //RequestDTO to Motorcycle Auto Mapping
-            CreateMap<CreateMotorcycleRequest, Motorcycle>();
+            CreateMap<CreateCustomerRequest, Motorcycle>();
             CreateMap<UpdateMotorcycleRequest, Motorcycle>();
 
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MotorcycleMicroService.Domain.Entities;
+using MotorcycleMicroService.Persistence.Mapping;
 using MotorcycleMicroService.Persistense.Mapping;
 
 namespace MotorcycleMicroService.Persistense.Context
@@ -17,9 +18,14 @@ namespace MotorcycleMicroService.Persistense.Context
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         /// <summary>
-        /// Gets or sets the <see cref="DbSet{TEntity}"/> for the <see cref="User"/> entity.
+        /// Gets or sets the <see cref="DbSet{TEntity}"/> for the <see cref="Motorcycle"/> entity.
         /// </summary>
         public DbSet<Motorcycle> Motorcycles { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="DbSet{TEntity}"/> for the <see cref="Customer"/> entity.
+        /// </summary>
+        public DbSet<Customer> Customers { get; set; }
 
         /// <summary>
         /// Configures the Entity Framework model when creating the entities in the database.
@@ -29,6 +35,7 @@ namespace MotorcycleMicroService.Persistense.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new MotorcycleConfiguration());
+            builder.ApplyConfiguration(new CustomerConfiguration());
             //Add other configurations
         }
     }
