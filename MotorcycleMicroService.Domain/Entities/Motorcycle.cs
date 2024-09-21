@@ -11,8 +11,8 @@ namespace MotorcycleMicroService.Domain.Entities
 
         public short YearManufacture { get; set; }
         
-        public Guid CustomerId { get; set; }
+        public Guid? CustomerId { get; set; }
 
-        public Customer Customer { get; set; }
+        public Customer? Customer { get; set; }
     }
 }

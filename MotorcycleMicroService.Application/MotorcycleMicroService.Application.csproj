@@ -15,9 +15,4 @@
     <ProjectReference Include="..\MotorcycleMicroService.Domain\MotorcycleMicroService.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dto\CustomerDto\Requests\" />
-    <Folder Include="Dto\CustomerDto\Responses\" />
-  </ItemGroup>
-
 </Project>

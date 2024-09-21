@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MotorcycleMicroService.Application.AutoMapping;
+using MotorcycleMicroService.Application.Interfaces.UseCases.CustomerUseCases;
 using MotorcycleMicroService.Application.Interfaces.UseCases.MotorcycleUseCases;
 using MotorcycleMicroService.Application.Services;
 using MotorcycleMicroService.Application.UseCases;
+using MotorcycleMicroService.Application.UseCases.CustomerUseCases;
 using MotorcycleMicroService.Domain.Interfaces.Repositories;
 using MotorcycleMicroService.Domain.Interfaces.Services;
 using MotorcycleMicroService.Persistense.Context;
@@ -38,6 +40,10 @@ namespace MotorcycleMicroService.CrossCutting.DependencyInjection
             services.AddScoped<IUpdateMotorcycleUseCase, UpdateMotorcycleUseCase>();
             services.AddScoped<IDeleteMotorcycleUseCase, DeleteMotorcycleUseCase>();
             services.AddScoped<IGetAllMotorcyclesUseCase, GetAllMotorcyclesUseCase>();
+
+            services.AddScoped<ICreateCustomerUseCase, CreateCustomerUseCase>();
+            services.AddScoped<IGetCustomerByIdUseCase, GetCustomerByIdUseCase>();
+
         }
     }
 }

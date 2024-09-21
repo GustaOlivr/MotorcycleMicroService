@@ -67,7 +67,7 @@ O Projeto `MotorcycleMicroService API` é uma API RESTful projetada para o geren
     
     Navegue até o diretório do projeto de repositório e execute:
     
-    `dotnet ef migrations add InitialCreate -p ManutSystem.Repository -s ManutSystem.API` 
+    `dotnet ef migrations add InitialCreate -p MotorcycleMicroService.Repository -s MotorcycleMicroService.API` 
     
 2.  **Aplicar Migrações**
     

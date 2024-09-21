@@ -35,7 +35,9 @@ namespace MotorcycleMicroService.Persistence.Mapping
             builder.HasMany(c => c.Motorcycles)
                    .WithOne(m => m.Customer)
                    .HasForeignKey(m => m.CustomerId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                   .OnDelete(DeleteBehavior.Cascade)
+                   .OnDelete(DeleteBehavior.SetNull); // Permite que um cliente não tenha motos inicialmente
+            ;
 
             base.Configure(builder);
         }

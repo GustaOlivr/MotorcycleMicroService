@@ -22,7 +22,7 @@ namespace MotorcycleMicroService.Application.UseCases
         {
             IList<Motorcycle> motorcycles = await _motorcycleService.GetAllAsync(
                 filter: m => (string.IsNullOrEmpty(request.Name) || m.Name.Contains(request.Name)) &&
-                             (string.IsNullOrEmpty(request.Manufacturer) || m.Manufacturer.Contains(request.Manufacturer)),
+                             (string.IsNullOrEmpty(request.Plate) || m.Plate.Contains(request.Plate)),
                 skip: (request.PageIndex - 1) * request.PageSize,
                 take: request.PageSize
             );

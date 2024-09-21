@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using MotorcycleMicroService.Application.Dto.MotorcycleDto.Request;
-using MotorcycleMicroService.Application.Dto.MotorcycleDto.Response;
+using MotorcycleMicroService.Application.Dto.CustomerDto.Requests;
+using MotorcycleMicroService.Application.Dto.CustomerDto.Responses;
 using MotorcycleMicroService.Domain.Entities;
 
 namespace MotorcycleMicroService.Application.AutoMapping
@@ -10,13 +10,13 @@ namespace MotorcycleMicroService.Application.AutoMapping
         public CustomerMappingProfile()
         {
             //RequestDTO to Motorcycle Auto Mapping
-            //CreateMap<CreateCustomerRequest, Customer>();
+            CreateMap<CreateCustomerRequest, Customer>();
             //CreateMap<UpdateCustomerRequest, Customer>();
 
 
             ////Motorcycle to ResponseDTO Auto Mapping
-            //CreateMap<Customer, CreateCustomerResponse>();
-            //CreateMap<Customer, GetCustomerByIdResponse>();
+            CreateMap<Customer, CreateCustomerResponse>();
+            CreateMap<Customer, GetCustomerByIdResponse>();
             //CreateMap<Customer, UpdateCustomerResponse>();
 
             //// Motorcycle to MotorcycleDto (for use in paginated responses)
