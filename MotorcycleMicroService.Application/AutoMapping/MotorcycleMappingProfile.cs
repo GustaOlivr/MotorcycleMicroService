@@ -12,6 +12,7 @@ namespace MotorcycleMicroService.Application.AutoMapping
             //RequestDTO to Motorcycle Auto Mapping
             CreateMap<CreateMotorcycleRequest, Motorcycle>();
             CreateMap<UpdateMotorcycleRequest, Motorcycle>();
+            CreateMap<LinkMotorcycleToCustomerRequest, Motorcycle>();
 
 
             //Motorcycle to ResponseDTO Auto Mapping
@@ -25,6 +26,9 @@ namespace MotorcycleMicroService.Application.AutoMapping
             // Optional: Mapping for paginated responses if needed
             CreateMap<List<Motorcycle>, GetAllMotorcyclesResponse>()
                 .ForMember(dest => dest.Motorcycles, opt => opt.MapFrom(src => src)); // Maps List<Motorcycle> to List<MotorcycleDto>
+
+            CreateMap<Motorcycle, LinkMotorcycleToCustomerResponse>();
+
         }
     }
 }

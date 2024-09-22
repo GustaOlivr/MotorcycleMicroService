@@ -4,6 +4,6 @@ namespace MotorcycleMicroService.Domain.Interfaces.Repositories
 {
     public interface ICustomerRepository : IGenericRepository<Customer>
     {
-        // Métodos específicos se necessário
+        Task<Customer> GetCustomerByCpfAsync(string cpf);
     }
 }

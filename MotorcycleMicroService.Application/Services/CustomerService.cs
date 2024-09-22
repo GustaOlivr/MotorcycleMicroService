@@ -12,5 +12,11 @@ namespace MotorcycleMicroService.Application.Services
         {
             _customerRepository = customerRepository;
         }
+
+        public async Task<Customer> GetCustomerByCpf(string cpf)
+        {
+            return await _customerRepository.GetCustomerByCpfAsync(cpf);
+        }
+
     }
 }

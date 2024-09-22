@@ -14,19 +14,22 @@ namespace MotorcycleMicroService.API.Controllers
         private readonly IUpdateMotorcycleUseCase _updateMotorcycleUseCase;
         private readonly IDeleteMotorcycleUseCase _deleteMotorcycleUseCase;
         private readonly IGetAllMotorcyclesUseCase _getAllMotorcyclesUseCase;
+        private readonly ILinkMotorcycleToCustomerUseCase _linkMotorcycleToCustomerUseCase;
 
         public MotorcyclesController(
             ICreateMotorcycleUseCase createMotorcycleUseCase,
             IGetMotorcycleByIdUseCase getMotorcycleByIdUseCase,
             IUpdateMotorcycleUseCase updateMotorcycleUseCase,
             IDeleteMotorcycleUseCase deleteMotorcycleUseCase,
-            IGetAllMotorcyclesUseCase getAllMotorcyclesUseCase)
+            IGetAllMotorcyclesUseCase getAllMotorcyclesUseCase,
+            ILinkMotorcycleToCustomerUseCase linkMotorcycleToCustomerUseCase)
         {
             _createMotorcycleUseCase = createMotorcycleUseCase;
             _getMotorcycleByIdUseCase = getMotorcycleByIdUseCase;
             _updateMotorcycleUseCase = updateMotorcycleUseCase;
             _deleteMotorcycleUseCase = deleteMotorcycleUseCase;
             _getAllMotorcyclesUseCase = getAllMotorcyclesUseCase;
+            _linkMotorcycleToCustomerUseCase = linkMotorcycleToCustomerUseCase;
         }
 
         [HttpPost]
@@ -75,6 +78,14 @@ namespace MotorcycleMicroService.API.Controllers
             }
 
             return BadRequest("Algo errado com a requisição");
+        }
+
+        [HttpPost("link")]
+        public async Task<IActionResult> LinkMotorcycleToCustomer([FromBody] LinkMotorcycleToCustomerRequest dto)
+        {
+            LinkMotorcycleToCustomerResponse response = await _linkMotorcycleToCustomerUseCase.ExecuteAsync(dto);
+
+            return CreatedAtAction(nameof(Get), new { id = response.MotorcycleId }, response);
         }
     }
 }
