@@ -11,19 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C686631D-6C0F-4AD1-BDA9-885341F5E19D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleMicroService.Domain", "MotorcycleMicroService.Domain\MotorcycleMicroService.Domain.csproj", "{7C60CE08-E2FA-4BB1-B1F7-A992354CFCD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotorcycleMicroService.Domain", "MotorcycleMicroService.Domain\MotorcycleMicroService.Domain.csproj", "{7C60CE08-E2FA-4BB1-B1F7-A992354CFCD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleMicroService.Application", "MotorcycleMicroService.Application\MotorcycleMicroService.Application.csproj", "{A4218389-CD8F-4429-BC18-5C6B1D8C80F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotorcycleMicroService.Application", "MotorcycleMicroService.Application\MotorcycleMicroService.Application.csproj", "{A4218389-CD8F-4429-BC18-5C6B1D8C80F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleMicroService.Persistense", "MotorcycleMicroService.Persistense\MotorcycleMicroService.Persistense.csproj", "{A1AEA3BE-48D2-4FD4-8C6F-96E11D7D634E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotorcycleMicroService.Persistense", "MotorcycleMicroService.Persistense\MotorcycleMicroService.Persistense.csproj", "{A1AEA3BE-48D2-4FD4-8C6F-96E11D7D634E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleMicroService.API", "MotorcycleMicroService.API\MotorcycleMicroService.API.csproj", "{F02F23F2-3ABE-4B07-83F6-1C35F5184B4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotorcycleMicroService.API", "MotorcycleMicroService.API\MotorcycleMicroService.API.csproj", "{F02F23F2-3ABE-4B07-83F6-1C35F5184B4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleMicroService.Tests", "MotorcycleMicroService.Tests\MotorcycleMicroService.Tests.csproj", "{6EC2907D-B6DA-4267-9343-CDFF5BEA09E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotorcycleMicroService.Tests", "MotorcycleMicroService.Tests\MotorcycleMicroService.Tests.csproj", "{6EC2907D-B6DA-4267-9343-CDFF5BEA09E4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{FC56CB96-C80C-4116-8D92-8D6A2469E328}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleMicroService.CrossCutting", "MotorcycleMicroService.CrossCutting\MotorcycleMicroService.CrossCutting.csproj", "{14187F6E-5876-48AD-9EF5-48D165084084}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotorcycleMicroService.CrossCutting", "MotorcycleMicroService.CrossCutting\MotorcycleMicroService.CrossCutting.csproj", "{14187F6E-5876-48AD-9EF5-48D165084084}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleMicroService.Test", "MotorcycleMicroService.Test\MotorcycleMicroService.Test.csproj", "{7BF643C3-E1D1-4A83-8684-D544AEFAA394}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{14187F6E-5876-48AD-9EF5-48D165084084}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14187F6E-5876-48AD-9EF5-48D165084084}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14187F6E-5876-48AD-9EF5-48D165084084}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF643C3-E1D1-4A83-8684-D544AEFAA394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF643C3-E1D1-4A83-8684-D544AEFAA394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF643C3-E1D1-4A83-8684-D544AEFAA394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF643C3-E1D1-4A83-8684-D544AEFAA394}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{F02F23F2-3ABE-4B07-83F6-1C35F5184B4B} = {410E8D3A-5B82-47DE-A98A-B79CFF575D6B}
 		{6EC2907D-B6DA-4267-9343-CDFF5BEA09E4} = {C686631D-6C0F-4AD1-BDA9-885341F5E19D}
 		{14187F6E-5876-48AD-9EF5-48D165084084} = {FC56CB96-C80C-4116-8D92-8D6A2469E328}
+		{7BF643C3-E1D1-4A83-8684-D544AEFAA394} = {C686631D-6C0F-4AD1-BDA9-885341F5E19D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB1FA542-E6DA-4BBB-9122-16AA407CDF9E}
