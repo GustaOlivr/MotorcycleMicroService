@@ -1,24 +1,17 @@
-using MotorcycleMicroService.CrossCutting.DependencyInjection;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Registro de serviços na IoC
-builder.Services.RegisterServices(builder.Configuration.GetConnectionString("DefaultConnection"));
+// Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("CorsPolicy", builder =>
-    {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
-});
+// Adicionar ocelot e suas dependências
+builder.Services.AddOcelot();
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
@@ -29,7 +22,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("CorsPolicy");
+// Middleware para Ocelot
+app.UseOcelot().Wait();
 
 app.UseHttpsRedirection();
 
