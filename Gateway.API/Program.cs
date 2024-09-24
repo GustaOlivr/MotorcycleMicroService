@@ -3,6 +3,10 @@ using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile("ocelot.json", optional: false,
+                                   reloadOnChange: true);
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -22,13 +26,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Middleware para Ocelot
-app.UseOcelot().Wait();
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Middleware para Ocelot
+app.UseOcelot().Wait();
 
 app.Run();
