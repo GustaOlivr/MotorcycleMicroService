@@ -1,15 +1,15 @@
 {
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:7218"
+    "BaseUrl": "http://gateway"
   },
   "Routes": [
     {
       "DownstreamPathTemplate": "/api/motorcycles",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7168
+          "Host": "motorcycle-service",
+          "Port": 8082
         }
       ],
       "UpstreamPathTemplate": "/gateway/motorcycles",

@@ -2,14 +2,20 @@ using MotorcycleMicroService.CrossCutting.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Registro de serviços na IoC
+// Configuraï¿½ï¿½es de Kestrel para escutar na porta 8082
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(8082); // Define a porta 8082 para o serviï¿½o de motocicletas
+});
+
+// Registro de serviï¿½os na IoC
 builder.Services.RegisterServices(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configuraï¿½ï¿½o do CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder =>
@@ -22,7 +28,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure o pipeline de requisiï¿½ï¿½es HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

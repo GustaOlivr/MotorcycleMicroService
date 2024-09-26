@@ -25,9 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCuttin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotorcycleMicroService.CrossCutting", "MotorcycleMicroService.CrossCutting\MotorcycleMicroService.CrossCutting.csproj", "{14187F6E-5876-48AD-9EF5-48D165084084}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleMicroService.Test", "MotorcycleMicroService.Test\MotorcycleMicroService.Test.csproj", "{7BF643C3-E1D1-4A83-8684-D544AEFAA394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotorcycleMicroService.Test", "MotorcycleMicroService.Test\MotorcycleMicroService.Test.csproj", "{7BF643C3-E1D1-4A83-8684-D544AEFAA394}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway.API", "Gateway.API\Gateway.API.csproj", "{D27DC8F5-1D72-43E2-BB6F-002D4EE7E587}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.API", "Gateway.API\Gateway.API.csproj", "{D27DC8F5-1D72-43E2-BB6F-002D4EE7E587}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

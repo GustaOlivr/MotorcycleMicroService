@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  gateway:
+    container_name: api-gateway
+    build:
+      context: .
+      dockerfile: ./Gateway.API/Dockerfile
+    ports:
+      - "8080:8080" 
+      - "8081:8081"  
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - motorcycle
+    networks:
+      - api_network
+
+  motorcycle:
+    container_name: motorcycle-service
+    build:
+      context: .
+      dockerfile: ./MotorcycleMicroService.API/Dockerfile
+    ports:
+      - "8082:8082" 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - api_network
+
+networks:
+  api_network:
+    driver: bridge
