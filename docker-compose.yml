@@ -15,6 +15,8 @@ services:
       - motorcycle
     networks:
       - api_network
+    command: ["dotnet", "ef", "database", "update"] 
+
 
   motorcycle:
     container_name: motorcycle-service
@@ -22,11 +24,13 @@ services:
       context: .
       dockerfile: ./MotorcycleMicroService.API/Dockerfile
     ports:
-      - "8082:8082" 
+      - "8082:8082"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     networks:
       - api_network
+
+
 
 networks:
   api_network:

@@ -25,6 +25,11 @@ COPY . .
 WORKDIR "/src/MotorcycleMicroService.API"
 RUN dotnet build "./MotorcycleMicroService.API.csproj" -c Release -o /app/build
 
+# Novo estágio para aplicar migrações
+FROM build AS migrations
+WORKDIR "/src/MotorcycleMicroService.Persistence"
+RUN dotnet ef database update --project MotorcycleMicroService.Persistence/MotorcycleMicroService.Persistence.csproj --startup-project MotorcycleMicroService.API/MotorcycleMicroService.API.csproj
+
 FROM build AS publish
 RUN dotnet publish "./MotorcycleMicroService.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
