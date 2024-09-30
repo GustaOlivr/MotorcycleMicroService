@@ -1,9 +1,12 @@
-﻿namespace MotorcycleMicroService.Application.Dto.MotorcycleDto.Request
+﻿using MotorcycleMicroService.Domain.Entities.Enumerations;
+
+namespace MotorcycleMicroService.Application.Dto.MotorcycleDto.Request
 {
     public class UpdateMotorcycleRequest
     {
         public string Name { get; set; }
-        public string YearManufacture { get; set; }
-        public string Manufacturer { get; set; }
+        public MotorcycleType Type { get; set; }
+        public int YearManufacture { get; set; }
+        public string Plate { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace MotorcycleMicroService.Domain.Entities
         public MotorcycleType Type { get; set; }
         public string Plate { get; set; }
 
-        public short YearManufacture { get; set; }
+        public int YearManufacture { get; set; }
         
         public Guid? CustomerId { get; set; }
 

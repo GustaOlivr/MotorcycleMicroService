@@ -10,6 +10,6 @@ namespace MotorcycleMicroService.Application.Dto.MotorcycleDto.Request
 
         public string Plate { get; set; }
 
-        public short YearManufacture { get; set; }
+        public int YearManufacture { get; set; }
     }
 }

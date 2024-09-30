@@ -1,11 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MotorcycleMicroService.Application.AutoMapping;
+using MotorcycleMicroService.Application.Dto.MotorcycleDto.Request;
 using MotorcycleMicroService.Application.Interfaces.UseCases.CustomerUseCases;
 using MotorcycleMicroService.Application.Interfaces.UseCases.MotorcycleUseCases;
 using MotorcycleMicroService.Application.Services;
 using MotorcycleMicroService.Application.UseCases;
 using MotorcycleMicroService.Application.UseCases.CustomerUseCases;
+using MotorcycleMicroService.Application.Validation.Motorcycle;
 using MotorcycleMicroService.Domain.Interfaces.Repositories;
 using MotorcycleMicroService.Domain.Interfaces.Services;
 using MotorcycleMicroService.Persistense.Context;
@@ -44,6 +48,16 @@ namespace MotorcycleMicroService.CrossCutting.DependencyInjection
 
             services.AddScoped<ICreateCustomerUseCase, CreateCustomerUseCase>();
             services.AddScoped<IGetCustomerByIdUseCase, GetCustomerByIdUseCase>();
+
+
+            // FluentValidation: Registrar validadores
+            services.AddValidatorsFromAssemblyContaining<CreateMotorcycleRequestValidator>();
+            services.AddValidatorsFromAssemblyContaining<UpdateMotorcycleRequestValidator>();
+
+
+            // Configurar FluentValidation na pipeline MVC
+            services.AddFluentValidationAutoValidation();
+            services.AddFluentValidationClientsideAdapters();
 
         }
     }
