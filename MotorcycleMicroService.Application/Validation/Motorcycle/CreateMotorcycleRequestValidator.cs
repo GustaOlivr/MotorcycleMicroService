@@ -23,6 +23,7 @@ namespace MotorcycleMicroService.Application.Validation.Motorcycle
                 .Length(7,10).WithMessage("The plate must be less than 10 characters");
 
             RuleFor(x => x.YearManufacture)
+                .NotEmpty().WithMessage("The Year Manufacture is required")
                 .InclusiveBetween(1885, DateTime.Now.Year).WithMessage("The year of manufacture must be between 1885 and the current year.");
 
             RuleFor(x => x.Type)
