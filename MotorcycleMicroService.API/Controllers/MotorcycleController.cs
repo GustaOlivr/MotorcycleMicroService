@@ -41,10 +41,11 @@ namespace MotorcycleMicroService.API.Controllers
             _logger.LogInformation("Request initiated");
 
             CreateMotorcycleResponse response = await _createMotorcycleUseCase.ExecuteAsync(dto);
+            
+            _logger.LogInformation("Response: {@response}", response);
 
             return CreatedAtAction(nameof(Get), new { id = response.MotorcycleId }, response);
 
-            _logger.LogInformation("Response: {@response}", response);
         }
 
         [HttpGet("{id}")]

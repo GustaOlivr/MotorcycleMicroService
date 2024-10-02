@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using MotorcycleMicroService.Domain.Interfaces.Repositories;
 using MotorcycleMicroService.Domain.Interfaces.Services;
 using System.Linq.Expressions;
@@ -8,15 +9,30 @@ namespace MotorcycleMicroService.Application.Services
     public class GenericService<T> : IGenericService<T> where T : class
     {
         private readonly IGenericRepository<T> _genericRepository;
+        private readonly ILogger<GenericService<T>> _logger;
 
-        public GenericService(IGenericRepository<T> genericRepository)
+        public GenericService(IGenericRepository<T> genericRepository, ILogger<GenericService<T>> logger)
         {
             _genericRepository = genericRepository;
+            _logger = logger;
         }
 
         public async Task<T> GetByIdAsync(Guid entityId)
         {
-            return await _genericRepository.GetByIdAsync(entityId);
+            _logger.LogInformation("Attempting to retrieve entity of type {EntityType} with ID {EntityId}.", typeof(T).Name, entityId);
+
+            var entity = await _genericRepository.GetByIdAsync(entityId);
+
+            if (entity == null)
+            {
+                _logger.LogWarning("Entity of type {EntityType} with ID {EntityId} was not found.", typeof(T).Name, entityId);
+            }
+            else
+            {
+                _logger.LogInformation("Successfully retrieved entity of type {EntityType} with ID {EntityId}.", typeof(T).Name, entityId);
+            }
+
+            return entity;
         }
 
         public async Task<List<T>> GetAllAsync(
@@ -25,49 +41,70 @@ namespace MotorcycleMicroService.Application.Services
                    int? skip = null,
                    int? take = null)
         {
+            _logger.LogInformation("Retrieving all entities of type {EntityType} with filter {Filter}.", typeof(T).Name, filter);
+
             IQueryable<T> query = _genericRepository.GetAll();
 
-            // Aplica o filtro se fornecido
             if (filter != null)
             {
                 query = query.Where(filter);
+                _logger.LogInformation("Applied filter to the query.");
             }
 
-            // Aplica a ordenação se fornecida
             if (orderBy != null)
             {
                 query = orderBy(query);
+                _logger.LogInformation("Applied ordering to the query.");
             }
 
-            // Aplica a paginação se fornecido
             if (skip.HasValue)
             {
                 query = query.Skip(skip.Value);
+                _logger.LogInformation("Applied skip of {Skip} records to the query.", skip.Value);
             }
 
             if (take.HasValue)
             {
                 query = query.Take(take.Value);
+                _logger.LogInformation("Applied take of {Take} records to the query.", take.Value);
             }
 
-            return await query.ToListAsync(); // Executa a consulta de forma assíncrona
+            var result = await query.ToListAsync();
+            _logger.LogInformation("Successfully retrieved {Count} entities of type {EntityType}.", result.Count, typeof(T).Name);
+
+            return result;
         }
 
         public async Task<T> CreateAsync(T entity)
         {
+            _logger.LogInformation("Creating a new entity of type {EntityType}.", typeof(T).Name);
+
             await _genericRepository.AddAsync(entity);
+
+            _logger.LogInformation("Successfully created entity of type {EntityType}.", typeof(T).Name);
+
             return entity;
         }
 
         public async Task<T> UpdateAsync(T updatedEntity)
         {
+            _logger.LogInformation("Updating entity of type {EntityType}.", typeof(T).Name);
+
             await _genericRepository.UpdateAsync(updatedEntity);
+
+            _logger.LogInformation("Successfully updated entity of type {EntityType}.", typeof(T).Name);
+
             return updatedEntity;
         }
 
         public async Task<bool> DeleteAsync(Guid entityId)
         {
+            _logger.LogInformation("Attempting to delete entity of type {EntityType} with ID {EntityId}.", typeof(T).Name, entityId);
+
             await _genericRepository.DeleteAsync(entityId);
+
+            _logger.LogInformation("Successfully deleted entity of type {EntityType} with ID {EntityId}.", typeof(T).Name, entityId);
+
             return true;
         }
     }
