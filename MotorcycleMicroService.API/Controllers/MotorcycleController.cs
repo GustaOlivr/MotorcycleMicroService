@@ -15,6 +15,7 @@ namespace MotorcycleMicroService.API.Controllers
         private readonly IDeleteMotorcycleUseCase _deleteMotorcycleUseCase;
         private readonly IGetAllMotorcyclesUseCase _getAllMotorcyclesUseCase;
         private readonly ILinkMotorcycleToCustomerUseCase _linkMotorcycleToCustomerUseCase;
+        private readonly ILogger<MotorcyclesController> _logger;
 
         public MotorcyclesController(
             ICreateMotorcycleUseCase createMotorcycleUseCase,
@@ -22,7 +23,8 @@ namespace MotorcycleMicroService.API.Controllers
             IUpdateMotorcycleUseCase updateMotorcycleUseCase,
             IDeleteMotorcycleUseCase deleteMotorcycleUseCase,
             IGetAllMotorcyclesUseCase getAllMotorcyclesUseCase,
-            ILinkMotorcycleToCustomerUseCase linkMotorcycleToCustomerUseCase)
+            ILinkMotorcycleToCustomerUseCase linkMotorcycleToCustomerUseCase,
+            ILogger<MotorcyclesController> logger)
         {
             _createMotorcycleUseCase = createMotorcycleUseCase;
             _getMotorcycleByIdUseCase = getMotorcycleByIdUseCase;
@@ -30,14 +32,19 @@ namespace MotorcycleMicroService.API.Controllers
             _deleteMotorcycleUseCase = deleteMotorcycleUseCase;
             _getAllMotorcyclesUseCase = getAllMotorcyclesUseCase;
             _linkMotorcycleToCustomerUseCase = linkMotorcycleToCustomerUseCase;
+            _logger = logger;
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateMotorcycleRequest dto)
         {
+            _logger.LogInformation("Request initiated");
+
             CreateMotorcycleResponse response = await _createMotorcycleUseCase.ExecuteAsync(dto);
 
             return CreatedAtAction(nameof(Get), new { id = response.MotorcycleId }, response);
+
+            _logger.LogInformation("Response: {@response}", response);
         }
 
         [HttpGet("{id}")]
