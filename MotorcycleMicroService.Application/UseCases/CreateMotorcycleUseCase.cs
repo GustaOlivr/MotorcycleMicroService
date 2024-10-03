@@ -24,9 +24,9 @@ namespace MotorcycleMicroService.Application.UseCases
         public async Task<CreateMotorcycleResponse> ExecuteAsync(CreateMotorcycleRequest dto)
         {
             Motorcycle motorcycle = _mapper.Map<Motorcycle>(dto);
-            _logger.LogDebug("Create Motorcycle initiated");
+            _logger.LogInformation("Create Motorcycle initiated");
             Motorcycle motorcycleCreated = await _motorcycleService.CreateAsync(motorcycle);
-            _logger.LogDebug("Converting Motorcycle in response");
+            _logger.LogInformation("Converting Motorcycle in response");
             CreateMotorcycleResponse response = _mapper.Map<CreateMotorcycleResponse>(motorcycleCreated);
             return response;
         }
