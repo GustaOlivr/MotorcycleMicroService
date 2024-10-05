@@ -3,7 +3,7 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Registro de serviços na IoC
+// Registers services in the IoC container.
 builder.Services.RegisterServices(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 builder.Services.AddControllers();
@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpContextAccessor();
 
+// Configures Serilog for logging
 builder.Host.UseSerilog((context, config) => config.ReadFrom.Configuration(context.Configuration));
 
 var app = builder.Build();

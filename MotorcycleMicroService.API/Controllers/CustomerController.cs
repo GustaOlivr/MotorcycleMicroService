@@ -8,6 +8,9 @@ using MotorcycleMicroService.Application.Interfaces.UseCases.MotorcycleUseCases;
 
 namespace MotorcycleMicroService.API.Controllers
 {
+    /// <summary>
+    /// Controller for managing customer-related operations.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
@@ -15,22 +18,36 @@ namespace MotorcycleMicroService.API.Controllers
         private readonly ICreateCustomerUseCase _createCustomerUseCase;
         private readonly IGetCustomerByIdUseCase _getCustomerByIdUseCase;
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomersController"/> class.
+        /// </summary>
+        /// <param name="createCustomerUseCase">Use case for creating customers.</param>
+        /// <param name="getCustomerByIdUseCase">Use case for retrieving a customer by ID.</param>
         public CustomersController(
-            ICreateCustomerUseCase createCustomerUseCase, IGetCustomerByIdUseCase getCustomerByIdUseCase )
+            ICreateCustomerUseCase createCustomerUseCase,
+            IGetCustomerByIdUseCase getCustomerByIdUseCase)
         {
             _createCustomerUseCase = createCustomerUseCase;
             _getCustomerByIdUseCase = getCustomerByIdUseCase;
         }
 
+        /// <summary>
+        /// Creates a new customer.
+        /// </summary>
+        /// <param name="dto">The customer data transfer object containing customer details.</param>
+        /// <returns>A created customer response along with a location header.</returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateCustomerRequest dto)
         {
             CreateCustomerResponse response = await _createCustomerUseCase.ExecuteAsync(dto);
-
             return CreatedAtAction(nameof(Get), new { id = response.CustomerId }, response);
         }
 
+        /// <summary>
+        /// Retrieves a customer by their ID.
+        /// </summary>
+        /// <param name="id">The ID of the customer to retrieve.</param>
+        /// <returns>The customer details if found; otherwise, a 404 Not Found response.</returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
