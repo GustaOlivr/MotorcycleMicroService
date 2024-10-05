@@ -1,11 +1,18 @@
-﻿using MotorcycleMicroService.Domain.Entities.Enumerations;
-
-namespace MotorcycleMicroService.Application.Dto.MotorcycleDto.Request
+﻿namespace MotorcycleMicroService.Application.Dto.MotorcycleDto.Request
 {
+    /// <summary>
+    /// DTO for linking a motorcycle to a customer based on their CPF.
+    /// </summary>
     public class LinkMotorcycleToCustomerRequest
     {
+        /// <summary>
+        /// The unique identifier of the motorcycle.
+        /// </summary>
         public Guid MotorcycleId { get; set; }
 
+        /// <summary>
+        /// The CPF of the customer to link the motorcycle to.
+        /// </summary>
         public string CustomerCpf { get; set; }
     }
 }

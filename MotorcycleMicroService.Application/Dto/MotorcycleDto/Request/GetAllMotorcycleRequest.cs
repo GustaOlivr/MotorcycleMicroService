@@ -1,16 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MotorcycleMicroService.Application.Dto.MotorcycleDto.Request
+﻿namespace MotorcycleMicroService.Application.Dto.MotorcycleDto.Request
 {
+    /// <summary>
+    /// DTO for retrieving a paginated list of motorcycles with optional filters.
+    /// </summary>
     public class GetAllMotorcyclesRequest
     {
-        public string? Name { get; set; } // Filtro opcional por nome
-        public string? Plate { get; set; } // Filtro opcional por fabricante
-        public int PageIndex { get; set; } = 1; // Padrão para a primeira página
-        public int PageSize { get; set; } = 10; // Padrão para 10 itens por página
+        /// <summary>
+        /// Optional filter by the name of the motorcycle.
+        /// </summary>
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Optional filter by the license plate of the motorcycle.
+        /// </summary>
+        public string? Plate { get; set; }
+
+        /// <summary>
+        /// The page number to retrieve, defaulting to 1.
+        /// </summary>
+        public int PageIndex { get; set; } = 1;
+
+        /// <summary>
+        /// The number of items to retrieve per page, defaulting to 10.
+        /// </summary>
+        public int PageSize { get; set; } = 10;
     }
 }
