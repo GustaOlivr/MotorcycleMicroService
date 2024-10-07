@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using MotorcycleMicroService.CrossCutting.DependencyInjection;
+using MotorcycleMicroService.Persistense.Context;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,8 +20,15 @@ builder.Host.UseSerilog((context, config) => config.ReadFrom.Configuration(conte
 
 var app = builder.Build();
 
+// Aplica as migrações automaticamente ao subir a aplicação
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>(); // Substitua "SeuDbContext" pelo nome do seu contexto de banco de dados
+    dbContext.Database.Migrate();  // Aplica as migrações pendentes
+}
+
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
