@@ -9,6 +9,7 @@ using MotorcycleMicroService.Application.Interfaces.UseCases.MotorcycleUseCases;
 using MotorcycleMicroService.Application.Services;
 using MotorcycleMicroService.Application.UseCases;
 using MotorcycleMicroService.Application.UseCases.CustomerUseCases;
+using MotorcycleMicroService.Application.Validation.Customer;
 using MotorcycleMicroService.Application.Validation.Motorcycle;
 using MotorcycleMicroService.Domain.Interfaces.Repositories;
 using MotorcycleMicroService.Domain.Interfaces.Services;
@@ -53,6 +54,8 @@ namespace MotorcycleMicroService.CrossCutting.DependencyInjection
             // FluentValidation: Registrar validadores
             services.AddValidatorsFromAssemblyContaining<CreateMotorcycleRequestValidator>();
             services.AddValidatorsFromAssemblyContaining<UpdateMotorcycleRequestValidator>();
+            services.AddValidatorsFromAssemblyContaining<CreateCustomerRequestValidator>();
+
 
 
             // Configurar FluentValidation na pipeline MVC
