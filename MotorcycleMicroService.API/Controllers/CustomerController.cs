@@ -17,6 +17,7 @@ namespace MotorcycleMicroService.API.Controllers
     {
         private readonly ICreateCustomerUseCase _createCustomerUseCase;
         private readonly IGetCustomerByIdUseCase _getCustomerByIdUseCase;
+        private readonly IUpdateCustomerUseCase _updateCustomerUseCase;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomersController"/> class.
@@ -25,10 +26,12 @@ namespace MotorcycleMicroService.API.Controllers
         /// <param name="getCustomerByIdUseCase">Use case for retrieving a customer by ID.</param>
         public CustomersController(
             ICreateCustomerUseCase createCustomerUseCase,
-            IGetCustomerByIdUseCase getCustomerByIdUseCase)
+            IGetCustomerByIdUseCase getCustomerByIdUseCase,
+            IUpdateCustomerUseCase updateCustomerUseCase)
         {
             _createCustomerUseCase = createCustomerUseCase;
             _getCustomerByIdUseCase = getCustomerByIdUseCase;
+            _updateCustomerUseCase = updateCustomerUseCase;
         }
 
         /// <summary>
@@ -69,12 +72,12 @@ namespace MotorcycleMicroService.API.Controllers
         //}
 
 
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Put(Guid id, [FromBody] UpdateMotorcycleRequest dto)
-        //{
-        //    UpdateMotorcycleResponse response = await _updateMotorcycleUseCase.ExecuteAsync(id, dto);
-        //    return Ok(response);
-        //}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(Guid id, [FromBody] UpdateCustomerRequest dto)
+        {
+            UpdateCustomerResponse response = await _updateCustomerUseCase.ExecuteAsync(id, dto);
+            return Ok(response);
+        }
 
         //[HttpDelete("{motorcycleId}")]
         //public async Task<IActionResult> Delete(Guid motorcycleId)

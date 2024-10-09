@@ -49,12 +49,17 @@ namespace MotorcycleMicroService.CrossCutting.DependencyInjection
 
             services.AddScoped<ICreateCustomerUseCase, CreateCustomerUseCase>();
             services.AddScoped<IGetCustomerByIdUseCase, GetCustomerByIdUseCase>();
+            services.AddScoped<IUpdateCustomerUseCase, UpdateCustomerUseCase>();
+
 
 
             // FluentValidation: Registrar validadores
             services.AddValidatorsFromAssemblyContaining<CreateMotorcycleRequestValidator>();
             services.AddValidatorsFromAssemblyContaining<UpdateMotorcycleRequestValidator>();
+
             services.AddValidatorsFromAssemblyContaining<CreateCustomerRequestValidator>();
+            services.AddValidatorsFromAssemblyContaining<UpdateCustomerRequestValidator>();
+
 
 
 

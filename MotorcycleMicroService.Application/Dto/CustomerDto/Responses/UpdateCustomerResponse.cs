@@ -1,13 +1,13 @@
 ﻿namespace MotorcycleMicroService.Application.Dto.CustomerDto.Responses
 {
     /// <summary>
-    /// DTO for the response after updating a existing customer. Contains the ID
-    /// and the details of the updated customer.
+    /// DTO for the response after creating a new customer. Contains the generated ID
+    /// and the details of the created customer.
     /// </summary>
-    public class UpdateCustomerResponse
+    public class CreateCustomerResponse
     {
         /// <summary>
-        /// The unique identifier of the updated customer.
+        /// The unique identifier of the created customer.
         /// </summary>
         public Guid CustomerId { get; set; }
 

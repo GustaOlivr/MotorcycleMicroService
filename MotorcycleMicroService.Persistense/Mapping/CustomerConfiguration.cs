@@ -25,7 +25,7 @@ namespace MotorcycleMicroService.Persistence.Mapping
                    .IsRequired();
 
             builder.Property(x => x.Telephone)
-                   .HasMaxLength(11)
+                   .HasMaxLength(12)
                    .IsRequired();
 
             builder.Property(x => x.Cpf)

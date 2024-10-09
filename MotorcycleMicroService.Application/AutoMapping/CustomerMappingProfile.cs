@@ -14,10 +14,14 @@ namespace MotorcycleMicroService.Application.AutoMapping
         {
             // Map CreateCustomerRequest to Customer
             CreateMap<CreateCustomerRequest, Customer>();
+            CreateMap<UpdateCustomerRequest, Customer>();
+
 
             // Map Customer to CreateCustomerResponse
             CreateMap<Customer, CreateCustomerResponse>();
             CreateMap<Customer, GetCustomerByIdResponse>();
+            CreateMap<Customer, UpdateCustomerResponse>();
+
         }
     }
 }
